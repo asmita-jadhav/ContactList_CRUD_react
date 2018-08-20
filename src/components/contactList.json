@@ -1,0 +1,47 @@
+{
+    "contacts": [
+        {
+            "id":"011",
+            "firstName": "Cassio",
+            "lastName":"Zen",
+            "email": "cassiozen@test.com",
+            "phoneNumber":123456789
+  },
+        {
+            "id":"012",
+            "firstName": "Dan",
+            "lastName":"Abramov",
+            "email": "gaearon@somewhere.com",
+            "phoneNumber":123654789            
+  },
+        {
+            "id":"013",
+            "firstName": "Pete",
+            "lastName":"Hunt",
+            "email": "floydophone@somewhere.com",
+            "phoneNumber":123675489           
+  },
+        {
+            "id":"014",
+            "firstName": "Paul",
+            "lastName":"O’Shannessy",
+            "email": "zpao@somewhere.com",
+            "phoneNumber":126543789              
+  },
+        {
+            "id":"015",
+            "firstName": "Ryan",
+            "lastName":"Florence",
+            "email": "rpflorence@somewhere.com",
+            "phoneNumber":123456789           
+  },
+        {
+            "id":"016",
+            "firstName": "Sebastian",
+            "lastName":"Markbage",
+            "email": "sebmarkbage@here.com",
+            "phoneNumber":123456789
+  }
+
+   ]
+}
