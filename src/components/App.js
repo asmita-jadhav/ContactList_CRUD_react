@@ -1,88 +1,55 @@
+/**
+ * This is App component which will load home page with childcomponent
+ * Author :Asmita Jadhav
+ * Date : 21/08/2018
+*/
 import React,{Component} from 'react';
 
-import $ from 'jquery';
-
 import Header from './Home/Header';
+import Message from './Message';
 import AddContact from './Contacts/AddContact';
 import ListContacts from './Contacts/ListContacts';
 import Footer from './Home/Footer';
 
-const items = [{
-        "id": "011",
-        "firstName": "Cassio",
-        "lastName": "Zen",
-        "email": "cassiozen@test.com",
-        "phoneNumber": 123456789,
-        "status": "Active"
-  },
-    {
-        "id": "012",
-        "firstName": "Dan",
-        "lastName": "Abramov",
-        "email": "gaearon@somewhere.com",
-        "phoneNumber": 123654789,
-        "status": "Active"
-  },
-    {
-        "id": "013",
-        "firstName": "Pete",
-        "lastName": "Hunt",
-        "email": "floydophone@somewhere.com",
-        "phoneNumber": 123675489,
-        "status": "Active"
-  },
-    {
-        "id": "014",
-        "firstName": "Paul",
-        "lastName": "O’Shannessy",
-        "email": "zpao@somewhere.com",
-        "phoneNumber": 126543789,
-        "status": "Active"
-  },
-    {
-        "id": "015",
-        "firstName": "Ryan",
-        "lastName": "Florence",
-        "email": "rpflorence@somewhere.com",
-        "phoneNumber": 123456789,
-        "status": "Active"
-  },
-    {
-        "id": "016",
-        "firstName": "Sebastian",
-        "lastName": "Markbage",
-        "email": "sebmarkbage@here.com",
-        "phoneNumber": 123456789,
-        "status": "Active"
-  }
-];
+const items=require('./data/contactList.json');
 
 class App extends Component {
 
-   constructor(props) {
-        super(props);
+   constructor() {        
+        super();
 
         this.state = {
-            items: items,                     
-        };        
+            items: items,
+            message:''                            
+        }; 
+        this.changeItems=this.changeItems.bind(this); 
+        this.loadMessage=this.loadMessage.bind(this);       
     }
     
-    changeItems(items){
+    changeItems(data){
+        this.state.items.push(data);
         this.setState({
-            items:items
-        })
+            items: items
+        });
+    }
+
+    loadMessage(data){
+        this.setState({
+            message:data
+        });
     }
     
-  render() {
-      return (
-      <div className="App">          
-          <Header />          
-          <AddContact />
-          <ListContacts items={this.state.items} />
-          <Footer />
-      </div>
-      );
-  }
+    render() {
+        return (
+        <div className="App">          
+            <Header />     
+            {this.state.message ? <Message message={this.state.message} />  : null }
+            <AddContact newItem={this.changeItems} message={this.loadMessage}/>
+            <ListContacts items={this.state.items} message={this.loadMessage} />
+            <Footer />
+        </div>
+        );
+    }
 }
 
 export default App;

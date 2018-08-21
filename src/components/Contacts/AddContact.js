@@ -1,19 +1,33 @@
+/**
+ * This component used to add new contact into the list..
+ * Author :Asmita Jadhav
+ * Date : 21/08/2018
+*/
+
 import React, {
     Component
 } from 'react';
 
-//import Modal from '../Modal/Modal';
 import './Contacts.css';
-
-//import $ from 'jquery';
 
 class AddContact extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            showForm: false            
+            showForm: false                      
         };
+        this.handleData=this.handleData.bind(this);
+    }
+
+    handleData(data) {           
+        if(data!=null){
+            this.props.message({"message":"Successfully contact added.","type":"success"});
+            this.props.newItem(data); 
+            this.onClick();  
+        }else{
+            this.props.message({"message":"Error in contact additionKindly check the details again.","type":"error"});
+        }         
     }
 
     onClick() {
@@ -24,15 +38,10 @@ class AddContact extends Component {
     
     render() {
 
-        return ( < div className = "AddContact" >
-                <
-                button className = "accordion"
-                onClick = {
-                    this.onClick.bind(this)
-                } > Click Here to Add Contact < /button>  {
-                this.state.showForm ? < AddContactForm / > : null
-            } <
-            /div>
+        return ( <div className = "AddContact" >
+                    <button className = "accordion" onClick = { this.onClick.bind(this)} > Click Here to Add Contact </button>  
+                    {this.state.showForm ? < AddContactForm handlerFromParant={this.handleData}/> : null  }
+                </div>
     );
 }
 }
@@ -59,15 +68,14 @@ class AddContactForm extends Component {
         });
     }
 
-    onChange = (e) => {
-        // Because we named the inputs to match their corresponding values in state, it's
-        // super easy to update the state        
+    onChange = (e) => {   
+        e.preventDefault();      
         this.setState({ [e.target.id]: e.target.value });
       }
 
-    handleSubmit(event) {
-        //this.togglePopup.bind(this);
-        console.log("submitted");
+     
+
+    handleSubmit(event) {               
         event.preventDefault();        
         
       var formdata = {
@@ -76,88 +84,44 @@ class AddContactForm extends Component {
         "email" : this.state.email,
         "phoneNumber" : this.state.phoneNumber,
         "status" : this.state.status
-
       }
-      
-      
-          
-      /*items.push(FormData);
-      listContacts.changedItems(items); */
-       
-        /*$.ajax({
-            url: 'contactList1.json',
-            type: 'POST',
-            dataType: 'JSON',
-            body: JSON.stringify(formdata),            
-            headers:{
-                "Accept":"application/json",
-                "Content-Type":"application/json"
-            },
-            success: function (data) {
-                console.log(data);
-            },
-            error: function (xhr, resp, text) {
-                console.log(xhr, resp, text);
-            }
-        });*/
+            
+      this.props.handlerFromParant(formdata);     
+
+      this.setState({                    
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        status: ''          
+      });
       
     }
 
     render() {
-        return (             <
-            form className = "form-inline addContactForm"
-            onSubmit = {
-                this.handleSubmit
-            } >
-            <
-            div className = "form-group" >
-            <
-            label htmlFor = "firstName" > First Name: < /label>  <
-            input type = "text"
-            className = "form-control"
-            id = "firstName" value={this.state.firstName} onChange={this.onChange}
-            required / >
-            <
-            /div>  <
-            div className = "form-group" >
-            <
-            label htmlFor = "lastName" > Last Name: < /label> <
-            input type = "text"
-            className = "form-control"
-            id = "lastName" value={this.state.lastName} onChange={this.onChange}
-            required / >
-            <
-            /div> <
-            div className = "form-group" >
-            <
-            label htmlFor = "email" > Email: < /label> <
-            input type = "email"
-            className = "form-control"
-            id = "email" value={this.state.email} onChange={this.onChange}
-            required / >
-            <
-            /div> <
-            div className = "form-group" >
-            <
-            label htmlFor = "phoneNumber" > Phone Number: < /label> <
-            input type = "number"
-            className = "form-control"
-            id = "phoneNumber" value={this.state.phoneNumber} onChange={this.onChange}
-            required / >
-            <
-            /div> <
-            div className = "form-group" >
-            <
-            label htmlFor = "status" > Status: < /label> <
-            input type = "text"
-            className = "form-control" value={this.state.status} onChange={this.onChange}
-            id = "status"
-            required / >
-            <
-            /div> <
-            button type = "submit"
-            className = "btn btn-default" > Add < /button> < /
-            form > );
+        return ( <form className = "form-inline addContactForm" onSubmit = { this.handleSubmit } >
+                    <div className = "form-group" >
+                        <label htmlFor = "firstName" > First Name: </label> 
+                        <input type = "text" className = "form-control" id = "firstName" value={this.state.firstName} onChange={this.onChange} required />
+                    </div>  
+                    <div className = "form-group" >
+                        <label htmlFor = "lastName" > Last Name: </label> 
+                        <input type = "text" className = "form-control" id = "lastName" value={this.state.lastName} onChange={this.onChange} required />            
+                    </div>
+                    <div className = "form-group">            
+                        <label htmlFor = "email" > Email: </label> 
+                        <input type = "email" className = "form-control" id = "email" value={this.state.email} onChange={this.onChange} required />            
+                    </div> 
+                    <div className = "form-group" >
+                        <label htmlFor = "phoneNumber" > Phone Number: </label>
+                        <input type = "number" className = "form-control" id = "phoneNumber" value={this.state.phoneNumber} onChange={this.onChange} required />
+                    </div> 
+                    <div className = "form-group" >
+                        <label htmlFor = "status" > Status: </label> 
+                        <input type = "text" className = "form-control" value={this.state.status} onChange={this.onChange} id = "status" required />
+                    </div> 
+                    <button type = "submit" className = "btn btn-default" > Add </button>  
+                </form > );
         }
     }
     

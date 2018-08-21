@@ -1,3 +1,8 @@
+/**
+ * This is Footer component of the home page
+ * Author :Asmita Jadhav
+ * Date : 21/08/2018
+*/
 import React,{Component} from 'react';
 
 import './Home.css'
