@@ -9,7 +9,7 @@ Follow below steps to project up and running on local machine for development or
 2. cd ContactList_CRUD_react
 3. run npm install
 4. run npm start      // for development server 
-5. run npm build    // for production server
+5. run npm run-script build    // for optimized production build
 
 ### Prerequisites
 
