@@ -1,14 +1,15 @@
 .accordion {
-    background-color: #eee;
+    background-color:#777;
     color: #444;
     cursor: pointer;
     padding: 12px;
     width: 100%;
-    text-align: left;
+    text-align: center;
     border: none;
     outline: none;
     transition: 0.4s;
     margin-top:2%;
+    color:white;
 }
 
 .active, .accordion:hover {
@@ -37,6 +38,5 @@ table{
 }
 
 td:focus{
-    background-color:lightslategray;
-    color:white;
+    background-color:aliceblue;    
 }

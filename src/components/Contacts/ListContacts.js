@@ -41,6 +41,12 @@ class ListContacts extends Component {
         this.setState({
             items: updatedList
         });
+        
+        if(updatedList!=null){
+            this.props.message({"message":"Successfully contact Edited.","type":"success"});                        
+        }else{
+            this.props.message({"message":"Error in contact edition..Kindly check the details again.","type":"error"});
+        } 
 
     }
 
@@ -73,7 +79,8 @@ class ListContacts extends Component {
                             <th> Last Name </th>   
                             <th> Email </th>   
                             <th> Phone Number </th>   
-                            <th> Status </th>                               
+                            <th> Status </th>   
+                            <th > </th> 
                             <th > </th>  
                         </tr> 
                     </thead>  
@@ -86,7 +93,10 @@ class ListContacts extends Component {
                                         <td onClick={(e)=>this.handleEditClick(e)}> {row.lastName} </td> 
                                         <td onClick={(e)=>this.handleEditClick(e)}> {row.email} </td> 
                                         <td onClick={(e)=>this.handleEditClick(e)}> {row.phoneNumber} </td>  
-                                        <td onClick={(e)=>this.handleEditClick(e)}> { row.status} </td>                                          
+                                        <td onClick={(e)=>this.handleEditClick(e)}> { row.status} </td>               <td >
+                                            <button type = "button" className = "btn btn-default btn-sm" id = {row.id } onClick = { () => this.handleEditChangeClick(row) } > Edit 
+                                            </button>  
+                                        </td >                            
                                         <td >
                                             <button type = "button" className = "btn btn-default btn-sm" id = {row.id } onClick = { () => this.handleStatusClick(row) } > Deactivate 
                                             </button>  

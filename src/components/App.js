@@ -20,10 +20,11 @@ class App extends Component {
 
         this.state = {
             items: items,
-            message:''                            
+            message:null                            
         }; 
         this.changeItems=this.changeItems.bind(this); 
-        this.loadMessage=this.loadMessage.bind(this);       
+        this.loadMessage=this.loadMessage.bind(this);  
+       this.messageChanged=this.messageChanged.bind(this);
     }
     
     changeItems(data){
@@ -39,11 +40,17 @@ class App extends Component {
         });
     }
     
+    messageChanged(data){
+        this.setState({
+            message:null
+        });
+    }
+            
     render() {
         return (
         <div className="App">          
             <Header />     
-            {this.state.message ? <Message message={this.state.message} />  : null }
+            {(this.state.message!=null) ? <Message message={this.state.message} onChange={this.messageChanged}/>  : null }
             <AddContact newItem={this.changeItems} message={this.loadMessage}/>
             <ListContacts items={this.state.items} message={this.loadMessage} />
             <Footer />

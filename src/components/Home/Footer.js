@@ -11,7 +11,7 @@ class Footer extends Component {
   render() {
       return (
       <div className="footer">
-        <h4>Copyright Policy</h4>
+        <h5>Copyright Policy</h5>
       </div>
       );
   }

@@ -97,7 +97,7 @@ class AddContactForm extends Component {
       });
       
     }
-
+    
     render() {
         return ( <form className = "form-inline addContactForm" onSubmit = { this.handleSubmit } >
                     <div className = "form-group" >
@@ -114,7 +114,7 @@ class AddContactForm extends Component {
                     </div> 
                     <div className = "form-group" >
                         <label htmlFor = "phoneNumber" > Phone Number: </label>
-                        <input type = "number" className = "form-control" id = "phoneNumber" value={this.state.phoneNumber} onChange={this.onChange} required />
+                        <input type = "tel" className = "form-control" id = "phoneNumber" value={this.state.phoneNumber} onChange={this.onChange} required />
                     </div> 
                     <div className = "form-group" >
                         <label htmlFor = "status" > Status: </label> 
