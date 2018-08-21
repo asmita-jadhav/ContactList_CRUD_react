@@ -5,7 +5,7 @@ This project maintains the contact list and do CRUD operations.
 ## Getting Started
 
 Follow below steps to project up and running on local machine for development or PROD deployment.
-1. Clone the project  by commond  git clone https://github.com/asmita-jadhav/ContactList_CRUD_react.git
+1. git clone https://github.com/asmita-jadhav/ContactList_CRUD_react.git  //Clone the project   
 2. cd ContactList_CRUD_react
 3. run npm install
 4. run npm start      // for development server 
