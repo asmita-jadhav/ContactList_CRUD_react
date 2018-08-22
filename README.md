@@ -31,7 +31,7 @@ CRUD functionality :
   
 ## Keywords
 
-React , React.Component , State , props , Conditional rendering, state lifting 
+javascript , CSS , React , React.Component , State , props , Conditional rendering, state lifting 
 
 ## Authors
 
